@@ -1,5 +1,7 @@
 package com.example.mobapps
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import coil.compose.AsyncImage
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -41,45 +43,54 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ProfileCard(modifier: Modifier = Modifier) {
-    Card(
-        modifier = modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(8.dp)
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.Start,
+        Card(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(0.9f)
+                .heightIn(min = 400.dp),
+            shape = RoundedCornerShape(16.dp),
+            elevation = CardDefaults.cardElevation(8.dp)
         ) {
-            AsyncImage(
-                model = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe3FTcqqktnw_JYUiyEsWBxvzCLbB52AuZ1Q&s",
-                contentDescription = "Profile Picture",
-                modifier = Modifier
-                    .size(72.dp)
-                    .clip(CircleShape)
-            )
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-
-            Column {
-                Text(
-                    text = "Jonathan Vincent",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
+            Row(
+                modifier = Modifier.padding(16.dp),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.Start,
+            ) {
+                AsyncImage(
+                    model = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe3FTcqqktnw_JYUiyEsWBxvzCLbB52AuZ1Q&s",
+                    contentDescription = "Profile Picture",
+                    modifier = Modifier
+                        .size(72.dp)
+                        .clip(CircleShape)
                 )
-                Text( //Titt
-                    text = "CS | Android Developer",
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text( //Deskripsi
-                    text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Text(
+                        text = "Jonathan Vincent",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "CS | Android Developer",
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp)) //jarak kebawah
+                    Text(
+                        text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
         }
     }
