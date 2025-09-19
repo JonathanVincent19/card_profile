@@ -54,7 +54,7 @@ fun ProfileCard(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.Start,
         ) {
             AsyncImage(
-                model = "https://i.pravatar.cc/150?img=10", 
+                model = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe3FTcqqktnw_JYUiyEsWBxvzCLbB52AuZ1Q&s",
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(72.dp)
